@@ -12,7 +12,7 @@ const navigation = [
   { name: "Merchandise", href: "#" },
 ];
 
-export default function Navbar({ useBigLetter }) {
+export default function Navbar({ useBigLetter }: { useBigLetter: boolean }) {
   const [isBigLetter, setIsBiggerLetter] = useState(useBigLetter === undefined);
 
   return (

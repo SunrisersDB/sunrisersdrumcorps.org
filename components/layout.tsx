@@ -2,7 +2,15 @@ import Head from "next/head";
 
 export const siteTitle = "The Sunrisers";
 
-export default function Layout({ children, home }) {
+export default function Layout({
+  children,
+  title,
+  home,
+}: {
+  children: React.ReactNode;
+  title?: string;
+  home?: string;
+}) {
   return (
     <div>
       <Head>

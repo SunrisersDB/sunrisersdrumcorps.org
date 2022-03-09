@@ -23,7 +23,7 @@ import { ChevronRightIcon } from "@heroicons/react/solid";
 import { MailIcon, UserIcon } from "@heroicons/react/solid";
 import JoiningSteps from "./joiningSteps/joiningSteps";
 
-export default function Hero({ children, home }) {
+export default function Hero({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative overflow-hidden">
       <main>
