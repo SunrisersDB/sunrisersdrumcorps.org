@@ -6,25 +6,30 @@ generator client {
 }
 
 datasource db {
-  provider          = "sqlserver"
+  provider          = "postgresql"
   url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
-}
-
-model User {
-  id           Int           @id @default(autoincrement())
-  createdAt    DateTime      @default(now())
-  email        String        @unique
-  passwordHash String
-  NewsArticle  NewsArticle[]
+  // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model NewsArticle {
   id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  slug      String?
   title     String
-  content   String
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
+  slug      String?
+  content   String?
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  published Boolean  @default(false)
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  Int?
+}
+
+model User {
+  id          Int           @id @default(autoincrement())
+  email       String        @unique
+  name        String?
+  createdAt   DateTime      @default(now()) @map(name: "created_at")
+  updatedAt   DateTime      @updatedAt @map(name: "updated_at")
+  NewsArticle NewsArticle[]
+
+  @@map(name: "users")
 }
