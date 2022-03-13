@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import React from "react";
+import Header from "../../components/Header/Header";
 import Layout from "../../components/layout";
 import NewsArticle, {
   NewsArticleProps,
@@ -34,6 +35,9 @@ type NewsProps = {
 const News: React.FC<NewsProps> = (props) => {
   return (
     <Layout>
+      <Header>
+        
+      </Header>
       <h1>News</h1>
 
       <main>
